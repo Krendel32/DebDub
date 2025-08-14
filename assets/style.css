@@ -1,0 +1,268 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Топ-бар */
+.top-bar {
+    position: fixed; /* фиксируем сверху */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #dfdfdf;
+    color: black;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+/* Кнопка меню */
+.menu-btn {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Название страницы по центру */
+.page-title {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+}
+
+/* Боковое меню */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* спрятано */
+    width: 250px;
+    height: 100%;
+    background: #f7f7f7;
+    padding-top: 50px; /* отступ под топ-бар */
+    box-sizing: border-box;
+    transition: left 0.3s;
+    z-index: 999;
+}
+
+.side-menu a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.side-menu a:hover {
+    background: #999;
+}
+
+/* Основной контент — сдвигаем вниз под топ-бар */
+main {
+    padding: 60px 15px 15px;
+}
+
+.content-container {
+    max-width: 900px;         /* ширина контейнера */
+    margin: 0 auto;           /* по центру */
+    padding: 20px;            /* внутренние отступы */
+    background: rgba(255, 255, 255, 0.9); /* светлая подложка */
+    border-radius: 10px;      /* скруглённые углы */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Тёмная тема */
+
+
+/* Видео-плеер — адаптивный */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Описание */
+.description {
+    margin-top: 15px;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* Список серий */
+.episode-list {
+    margin-top: 15px;
+}
+.episode-list button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #d1d1d1;
+    color: black;
+}
+
+.episode-list button:hover {
+    background: #e1e1e1;
+}
+.themeToggle button {
+	margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #d1d1d1;
+    color: black;
+}
+
+
+
+
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+}
+
+/* Стили переключателя */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0; /* прячем реальный чекбокс */
+    width: 0;
+    height: 0;
+}
+
+/* Слайдер переключателя */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.3s;
+    border-radius: 26px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+/* Активное состояние */
+input:checked + .slider {
+    background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/* Для тёмной темы */
+body.dark input:checked + .slider {
+    background-color: #66bb6a;
+}
+
+
+
+
+
+
+.episodes-container {
+    margin-top: 15px;
+    background: rgba(0,0,0,0.05);
+    padding: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+/* Прокрутка кнопок по горизонтали */
+.episodes-scroll {
+    display: flex;
+    gap: 10px;
+}
+
+/* Кнопки серий */
+.episodes-scroll button {
+    flex: 0 0 auto; /* Не сжимать кнопки */
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #444;
+    color: white;
+    transition: background 0.2s;
+}
+.episodes-scroll button:hover {
+    background: #555;
+}
+
+/* Для тёмной темы */
+body.dark .episodes-container {
+    background: rgba(255,255,255,0.05);
+}
+body.dark .episodes-scroll button {
+    background: #666;
+}
+body.dark .episodes-scroll button:hover {
+    background: #777;
+}
+
+
+
+
+
+/* Тёмная тема */
+body.dark {
+	background: #333;
+	color: #ddd;
+}
+body.dark .top-bar {
+    background: #222;
+    color: #ddd;
+}
+body.dark .side-menu {
+    background: #2a2a2a;
+}
+body.dark .side-menu a {
+    color: #ddd;
+}
+body.dark .menu-btn {
+	color: #ddd;
+}	
+body.dark .content-container {
+    background: rgba(30, 30, 30, 0.95);
+}
+body.dark .episode-list button {
+    background: #333;
+	color: white;
+}
+body.dark .episode-list button:hover {
+    background: #262626;
+}
+body.dark .side-menu a:hover {
+    background: #555;
+}
