@@ -22,22 +22,54 @@
 
 
 <main>
-    <div class="content-container">
-		<h2 id="animeTitle">Дейон йоу</h2>
+	<div class="content-container">
+		<div class="episode-select">
+		  <label for="episodeSelect" class="episode-label">Выберите серию</label>
 
-		<!-- Видео-плеер -->
-		<div class="video-wrapper">
-			<video id="videoPlayer" controls width="100%">
-				<source src="" type="video/mp4">
-				Ваш браузер не поддерживает видео.
-			</video>
+		  <div class="select">
+		    <select id="episodeSelect"></select>
+		  </div>
 		</div>
 
-
+		<div class="video-wrapper">
+		  <video id="player" controls width="100%">
+		    <source src="" type="video/mp4">
+ 		   Ваш браузер не поддерживает видео.
+		  </video>
+		</div>
 	</div>
 </main>
 <script>
+// Твой массив эпизодов:
+const episodesDon = [
+  { title: 'Эпизод 1', url: 'https://www.dropbox.com/scl/fi/ruht8iy2etf02vfjwp1am/.mp4?rlkey=w7sbbxkjt0uh3kwlcmzk9j5fp&st=rx8wzh5z&raw=1' },
+  { title: 'Мем но.1', url: 'https://www.dropbox.com/scl/fi/u5x4wcjgeh0fpc7ulkekq/.mp4?rlkey=koy1lhb5zmq15adi9ze7y8sij&st=w6ujd38o&raw=1' },
+];
 
+const selectEl = document.getElementById('episodeSelect');
+const player   = document.getElementById('player');
+const source   = player.querySelector('source');
+
+// Заполняем селект
+episodesDon.forEach((ep, i) => {
+  const opt = document.createElement('option');
+  opt.value = ep.url;
+  opt.textContent = ep.title;
+  selectEl.appendChild(opt);
+});
+
+// Если есть серии — загружаем первую
+if (episodesDon.length) {
+  source.src = episodesDon[0].url;
+  player.load();
+}
+
+// Переключение серии по выбору
+selectEl.addEventListener('change', () => {
+  source.src = selectEl.value;
+  player.load();
+  player.play();
+});
 </script>
 <script src="../../Assets/script.js"></script>
 </body>
