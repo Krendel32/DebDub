@@ -1,5 +1,68 @@
 <html lang="ru">
 <head>
+<style>
+.custom-select-wrapper {
+    position: relative;
+    width: 200px;
+    margin-bottom: 15px;
+}
+
+.custom-select {
+    background: #e2e2e2;
+    color: black;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.custom-select span {
+	overflow: 1;
+    display: block;
+}
+
+.custom-select ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #d3d3d3;
+    border-radius: 8px;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    overflow: hidden;
+	position: absolute;
+    z-index: 999;
+	margin-top: 3px;
+}
+
+.custom-select ul li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.custom-select ul li:hover {
+    background: #bdbdbd;
+}
+
+.hidden {
+    display: none;
+}
+
+
+body.dark .custom-select {
+    background: #2c2c2c;
+    color: white;
+}
+body.dark .custom-select ul {
+    background: #3a3a3a;
+}
+body.dark .custom-select ul li:hover {
+    background: #555;
+}
+
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DebDub - D-ON</title>
@@ -23,52 +86,77 @@
 
 <main>
 	<div class="content-container">
-		<div class="episode-select">
-		  <label for="episodeSelect" class="episode-label">Выберите серию</label>
-
-		  <div class="select">
-		    <select id="episodeSelect"></select>
-		  </div>
+		<div class="custom-select-wrapper">
+		    <div class="custom-select" id="customSelect">
+		        <span id="selectedOption">Выбери серию</span>
+		        <ul id="optionsList" class="hidden"></ul>
+		    </div>
 		</div>
 
-		<div class="video-wrapper">
-		  <video id="player" controls width="100%">
+		<video id="player" poster="https://media.tenor.com/jvM7s2tiUWsAAAAM/rat-spin.gif" width="100%" controls>
 		    <source src="" type="video/mp4">
- 		   Ваш браузер не поддерживает видео.
-		  </video>
-		</div>
+		    Ваш браузер не поддерживает видео.
+		</video>
 	</div>
 </main>
 <script>
-// Твой массив эпизодов:
-const episodesDon = [
-  { title: 'Эпизод 1', url: 'https://www.dropbox.com/scl/fi/ruht8iy2etf02vfjwp1am/.mp4?rlkey=w7sbbxkjt0uh3kwlcmzk9j5fp&st=rx8wzh5z&raw=1' },
-  { title: 'Мем но.1', url: 'https://www.dropbox.com/scl/fi/u5x4wcjgeh0fpc7ulkekq/.mp4?rlkey=koy1lhb5zmq15adi9ze7y8sij&st=w6ujd38o&raw=1' },
+// Массив с сериями
+const episodes = [
+    { title: "Серия 1", url: "https://www.dropbox.com/scl/fi/ruht8iy2etf02vfjwp1am/.mp4?rlkey=w7sbbxkjt0uh3kwlcmzk9j5fp&st=rx8wzh5z&raw=1" },
+    { title: "Серия 2", url: "videos/episode2.mp4" },
+    { title: "Серия 3", url: "videos/episode3.mp4" }
 ];
+let closeTimeout;
+const player = document.getElementById("player");
+const selectedOption = document.getElementById("selectedOption");
+const optionsList = document.getElementById("optionsList");
+const customSelect = document.getElementById("customSelect");
 
-const selectEl = document.getElementById('episodeSelect');
-const player   = document.getElementById('player');
-const source   = player.querySelector('source');
-
-// Заполняем селект
-episodesDon.forEach((ep, i) => {
-  const opt = document.createElement('option');
-  opt.value = ep.url;
-  opt.textContent = ep.title;
-  selectEl.appendChild(opt);
+// Заполняем выпадающий список из массива
+episodes.forEach((ep, index) => {
+    const li = document.createElement("li");
+    li.textContent = ep.title;
+    li.addEventListener("click", () => {
+        selectedOption.textContent = ep.title;
+        player.querySelector("source").src = ep.url;
+        player.load();
+        optionsList.classList.add("hidden");
+    });
+    optionsList.appendChild(li);
 });
 
-// Если есть серии — загружаем первую
-if (episodesDon.length) {
-  source.src = episodesDon[0].url;
-  player.load();
-}
 
-// Переключение серии по выбору
-selectEl.addEventListener('change', () => {
-  source.src = selectEl.value;
-  player.load();
-  player.play();
+
+customSelect.addEventListener("click", (e) => {
+    optionsList.classList.toggle("hidden");
+    e.stopPropagation(); 
+});
+// Клик на пункт — выбрать серию и закрыть меню
+optionsList.addEventListener("click", (e) => {
+    if (e.target.tagName === "LI") {
+        const index = Array.from(optionsList.children).indexOf(e.target);
+        selectedOption.textContent = episodes[index].title;
+        player.querySelector("source").src = episodes[index].url;
+        player.load();
+        optionsList.classList.add("hidden");
+    }
+});
+
+// Клик вне селекта — закрыть меню
+document.addEventListener("click", () => {
+    optionsList.classList.add("hidden");
+});
+
+// Закрытие меню при уходе курсора
+customSelect.addEventListener("mouseleave", () => {
+    closeTimeout = setTimeout(() => {
+        optionsList.classList.add("hidden");
+    }, 300); // 300 мс задержка
+});
+
+// Отмена закрытия, если курсор вернулся
+customSelect.addEventListener("mouseenter", () => {
+    clearTimeout(closeTimeout);
 });
 </script>
 <script src="../../Assets/script.js"></script>
