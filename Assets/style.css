@@ -129,6 +129,69 @@ main {
 
 
 
+/* Контейнер селекта */
+.episode-select {
+  margin: 10px 0 14px;
+}
+
+/* Подпись */
+.episode-label {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* Обёртка для селекта (нужна для собственной стрелки) */
+.select {
+  position: relative;
+  display: block;
+  color: #333;               /* цвет стрелки (см. .select::after) */
+}
+
+/* Сам селект */
+.select select {
+  appearance: none;          /* убираем системную стрелку */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 100%;
+  padding: 10px 42px 10px 12px;  /* место справа под стрелку */
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+  font: inherit;
+  line-height: 1.2;
+
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  cursor: pointer;
+}
+
+/* Красивая стрелка на псевдоэлементе: треугольник на currentColor */
+.select::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-35%);  /* чуть выше центра — визуально ровнее */
+  width: 0; height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid currentColor; /* цвет = .select { color } */
+  pointer-events: none;
+  opacity: .85;
+}
+
+/* Состояния */
+.select select:hover { border-color: #bdbdbd; }
+.select select:focus-visible {
+  outline: 2px solid #6ea8fe;
+  outline-offset: 2px;
+}
+
+
+
+
 .setting-row {
     display: flex;
     justify-content: space-between;
@@ -266,3 +329,14 @@ body.dark .episode-list button:hover {
 body.dark .side-menu a:hover {
     background: #555;
 }
+
+body.dark .episode-label { color: #ddd; }
+body.dark .select { color: #ddd; }                 /* цвет стрелки */
+body.dark .select select {
+  background: #1f1f1f;
+  color: #eee;
+  border-color: #3a3a3a;
+  box-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+body.dark .select select:hover { border-color: #4a4a4a; }
+body.dark .select select:focus-visible { outline-color: #8ab4ff; }
