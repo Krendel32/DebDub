@@ -1,16 +1,21 @@
 <html lang="ru">
 <head>
 <style>
+video {
+	border-radius: 12px; 
+	border: 2px solid #bdbdbd;
+}
+
 .custom-select-wrapper {
     position: relative;
-    width: 200px;
+    width: 50px;
     margin-bottom: 15px;
 }
 
 .custom-select {
     background: #e2e2e2;
     color: black;
-    padding: 10px;
+    padding: 7px;
     border-radius: 8px;
     cursor: pointer;
     user-select: none;
@@ -61,6 +66,10 @@ body.dark .custom-select ul {
 body.dark .custom-select ul li:hover {
     background: #555;
 }
+body.dark video {
+	border-radius: 12px; 
+	border: 2px solid #555;
+}
 
 </style>
 <meta charset="UTF-8">
@@ -85,15 +94,23 @@ body.dark .custom-select ul li:hover {
 
 
 <main>
+	<div style="text-align: center; padding-bottom: 10px;">
+		<img src="https://www.dropbox.com/scl/fi/mkfkg4sfkmc9qd1tbsgps/logo2.png?rlkey=p2gju3y44ci0stgkam2sc81rs&st=t07swefu&raw=1" alt="D-ON!" style="max-width: 100%; height: 150px;">
+	</div>
 	<div class="content-container">
+		<h1 style="text-align: center;">
+			Вечер в хату, Деграданты
+		</h1>
+		
+
 		<div class="custom-select-wrapper">
 		    <div class="custom-select" id="customSelect">
-		        <span id="selectedOption">Выбери серию</span>
+		        <span id="selectedOption">Выбор эпизода</span>
 		        <ul id="optionsList" class="hidden"></ul>
 		    </div>
 		</div>
 
-		<video id="player" poster="https://media.tenor.com/jvM7s2tiUWsAAAAM/rat-spin.gif" width="100%" style="border-radius: 12px;" controls>
+		<video id="player" poster="https://media.tenor.com/jvM7s2tiUWsAAAAM/rat-spin.gif" width="100%" controls>
 		    <source src="" type="video/mp4">
 		    Ваш браузер не поддерживает видео.
 		</video>
@@ -102,7 +119,7 @@ body.dark .custom-select ul li:hover {
 <script>
 // Массив с сериями
 const episodes = [
-    { title: "Серия 1", url: "https://www.dropbox.com/scl/fi/ruht8iy2etf02vfjwp1am/.mp4?rlkey=w7sbbxkjt0uh3kwlcmzk9j5fp&st=rx8wzh5z&raw=1" },
+    { title: "Эпизод 1", url: "https://www.dropbox.com/scl/fi/ruht8iy2etf02vfjwp1am/.mp4?rlkey=w7sbbxkjt0uh3kwlcmzk9j5fp&st=rx8wzh5z&raw=1" },
     { title: "Серия 2", url: "videos/episode2.mp4" },
     { title: "Серия 3", url: "videos/episode3.mp4" }
 ];
