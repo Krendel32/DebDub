@@ -288,7 +288,7 @@ body.dark .episodes-scroll button:hover {
 
 /* Тёмная тема */
 body.dark {
-
+    background-color: #333;
 	color: #ddd;
 }
 body.dark .top-bar {
