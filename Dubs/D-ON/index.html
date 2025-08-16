@@ -1,6 +1,10 @@
 <html lang="ru">
 <head>
 <style>
+
+.logo-text {
+    font-size: 2rem;
+}
 .info-block {
     display: flex;
 
@@ -181,6 +185,13 @@ body.dark #optionsList {
   background: #212121;
 }
 
+@media (max-width: 600px) {
+    .logo-text {font-size: 1.5rem;}
+    .info-block {padding-left: 0px;}
+    .info-text {margin-left: 10px;}
+    .info-title {width: 20%; max-width: 20%;}
+}
+
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -213,7 +224,7 @@ body.dark #optionsList {
 	</div>
 	<div class="content-container">
         <div class="info-container">
-            <h style="font-size: 2rem;">D-ON! - Клуб Дебильной Музыки</h>
+            <h class="logo-text">D-ON! - Клуб Дебильной Музыки</h>
             <hr style="border:none; height:1px; background:#ccc; margin:15px 0;">
 		    <div class="info-block" style="margin-top: 10px;">
                 <span class="info-title" style="height: 40px;">Статус:</span>
