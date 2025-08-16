@@ -13,12 +13,16 @@ video {
 }
 
 .custom-select {
-    background: #e2e2e2;
-    color: black;
-    padding: 7px;
-    border-radius: 8px;
-    cursor: pointer;
-    user-select: none;
+    
+  background: #e2e2e2;
+  color: black;
+  padding: 7px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .custom-select span {
@@ -27,6 +31,7 @@ video {
 }
 
 .custom-select ul {
+    
     list-style: none;
     padding: 0;
     margin: 0;
@@ -56,6 +61,17 @@ video {
 }
 
 
+
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 12px;
+}
+
+.arrow.open {
+  transform: rotate(-90deg);
+}
+
+
 body.dark .custom-select {
     background: #2c2c2c;
     color: white;
@@ -76,6 +92,7 @@ body.dark video {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DebDub - D-ON</title>
 <link rel="stylesheet" href="../../Assets/style.css">
+<link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/l9jdtpa354jl5u7azk62j/rounded-in-photoretrica.png?rlkey=bd0mgi47sq40u8fvdvsd682xo&st=jhaeoguo&raw=1">
 </head>
 <body>
 
@@ -103,8 +120,11 @@ body.dark video {
 		</h1>
 
 		<div class="custom-select-wrapper">
-		    <div class="custom-select" id="customSelect">
+		    <div class="custom-select" id="customSelect">  
+
 		        <span id="selectedOption">Выбор эпизода</span>
+                <span class="arrow">◀</span>
+
 		        <ul id="optionsList" class="hidden"></ul>
 		    </div>
 		</div>
@@ -127,6 +147,7 @@ const player = document.getElementById("player");
 const selectedOption = document.getElementById("selectedOption");
 const optionsList = document.getElementById("optionsList");
 const customSelect = document.getElementById("customSelect");
+const arrow = document.querySelector(".arrow");
 
 // Заполняем выпадающий список из массива
 episodes.forEach((ep, index) => {
@@ -137,6 +158,7 @@ episodes.forEach((ep, index) => {
         player.querySelector("source").src = ep.url;
         player.load();
         optionsList.classList.add("hidden");
+        arrow.classList.remove("open");
     });
     optionsList.appendChild(li);
 });
@@ -145,6 +167,7 @@ episodes.forEach((ep, index) => {
 
 customSelect.addEventListener("click", (e) => {
     optionsList.classList.toggle("hidden");
+    arrow.classList.toggle("open");
     e.stopPropagation(); 
 });
 // Клик на пункт — выбрать серию и закрыть меню
@@ -155,18 +178,21 @@ optionsList.addEventListener("click", (e) => {
         player.querySelector("source").src = episodes[index].url;
         player.load();
         optionsList.classList.add("hidden");
+        arrow.classList.remove("open");
     }
 });
 
 // Клик вне селекта — закрыть меню
 document.addEventListener("click", () => {
     optionsList.classList.add("hidden");
+    arrow.classList.remove("open");
 });
 
 // Закрытие меню при уходе курсора
 customSelect.addEventListener("mouseleave", () => {
     closeTimeout = setTimeout(() => {
         optionsList.classList.add("hidden");
+        arrow.classList.remove("open");
     }, 300); // 300 мс задержка
 });
 
