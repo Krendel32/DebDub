@@ -62,6 +62,11 @@ video {
   background: #d3d3d3;
   border-radius: 8px;
   z-index: 999;
+  max-height: 120px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
 }
 
 /* Состояние — показано */
@@ -70,6 +75,26 @@ video {
   transform: translateY(0);
   pointer-events: auto;
 }
+
+/* Для Webkit-браузеров (Chrome, Edge, Safari) */
+#optionsList::-webkit-scrollbar {
+    border-radius: 4px; 
+  width: 8px;               /* ширина скроллбара */
+}
+
+#optionsList::-webkit-scrollbar-thumb {
+  background-color: #888;   /* цвет ползунка */
+  border-radius: 4px;       /* скругление ползунка */
+}
+
+
+#optionsList::-webkit-scrollbar-track {
+  border-radius: 8px; /* скругление дорожки */
+  background: transparent;
+}
+
+
+
 .custom-select ul li {
     padding: 10px;
     cursor: pointer;
@@ -102,7 +127,7 @@ video {
 
 
 body.dark .custom-select {
-    background: #2c2c2c;
+    background: #212121;
     color: white;
 }
 body.dark .custom-select ul {
@@ -116,7 +141,7 @@ body.dark video {
 	border: 2px solid #555;
 }
 body.dark #optionsList {
-  background: #2c2c2c;
+  background: #212121;
 }
 
 </style>
@@ -147,32 +172,40 @@ body.dark #optionsList {
 		<img src="https://www.dropbox.com/scl/fi/mkfkg4sfkmc9qd1tbsgps/logo2.png?rlkey=p2gju3y44ci0stgkam2sc81rs&st=t07swefu&raw=1" alt="D-ON!" style="max-width: 100%; height: 150px;">
 	</div>
 	<div class="content-container">
-		<h1 style="text-align: center;">
-			Вечер в хату, Деграданты
-		</h1>
+        <div class="info-container">
+		    <h1 style="text-align: center;">
+		    	Вечер в хату, Деграданты
+		    </h1>
+        </div>
+        <div class="info-container">
+		    <div class="custom-select-wrapper">
+		        <div class="custom-select" id="customSelect">  
 
-		<div class="custom-select-wrapper">
-		    <div class="custom-select" id="customSelect">  
-
-		        <span id="selectedOption">Выбор эпизода</span>
-                <div class="arrow-wrapper">
-                    <span class="separator">|</span>
-                    <span class="arrow">◀</span>
-                </div>
-		        <ul id="optionsList" class="hidden"></ul>
+		            <span id="selectedOption">Выбор эпизода</span>
+                    <div class="arrow-wrapper">
+                        <span class="separator">|</span>
+                        <span class="arrow">◀</span>
+                    </div>
+		            <ul id="optionsList" class="hidden"></ul>
+		        </div>
 		    </div>
-		</div>
 
-		<video id="player" poster="https://media.tenor.com/jvM7s2tiUWsAAAAM/rat-spin.gif" width="100%" controls>
-		    <source src="" type="video/mp4">
-		    Ваш браузер не поддерживает видео.
-		</video>
+		    <video id="player" poster="https://media.tenor.com/jvM7s2tiUWsAAAAM/rat-spin.gif" width="100%" controls>
+		        <source src="" type="video/mp4">
+		        Ваш браузер не поддерживает видео.
+		    </video>
+        </div>
 	</div>
 </main>
 <script>
 // Массив с сериями
 const episodes = [
     { title: "Эпизод 1", url: "https://www.dropbox.com/scl/fi/ruht8iy2etf02vfjwp1am/.mp4?rlkey=w7sbbxkjt0uh3kwlcmzk9j5fp&st=rx8wzh5z&raw=1" },
+    { title: "Мем но.1", url: "https://www.dropbox.com/scl/fi/u5x4wcjgeh0fpc7ulkekq/.mp4?rlkey=koy1lhb5zmq15adi9ze7y8sij&st=w6ujd38o&raw=1" },
+    { title: "Мем но.1", url: "https://www.dropbox.com/scl/fi/u5x4wcjgeh0fpc7ulkekq/.mp4?rlkey=koy1lhb5zmq15adi9ze7y8sij&st=w6ujd38o&raw=1" },
+    { title: "Мем но.1", url: "https://www.dropbox.com/scl/fi/u5x4wcjgeh0fpc7ulkekq/.mp4?rlkey=koy1lhb5zmq15adi9ze7y8sij&st=w6ujd38o&raw=1" },
+    { title: "Мем но.1", url: "https://www.dropbox.com/scl/fi/u5x4wcjgeh0fpc7ulkekq/.mp4?rlkey=koy1lhb5zmq15adi9ze7y8sij&st=w6ujd38o&raw=1" },
+    { title: "Мем но.1", url: "https://www.dropbox.com/scl/fi/u5x4wcjgeh0fpc7ulkekq/.mp4?rlkey=koy1lhb5zmq15adi9ze7y8sij&st=w6ujd38o&raw=1" },
     { title: "Мем но.1", url: "https://www.dropbox.com/scl/fi/u5x4wcjgeh0fpc7ulkekq/.mp4?rlkey=koy1lhb5zmq15adi9ze7y8sij&st=w6ujd38o&raw=1" },
     { title: "Серия 3", url: "videos/episode3.mp4" }
 ];
