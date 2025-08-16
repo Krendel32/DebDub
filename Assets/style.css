@@ -74,6 +74,15 @@ main {
     border-radius: 10px;      /* скруглённые углы */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+.info-container {
+    max-width: 870px;         /* ширина контейнера */
+    margin: 0 auto;           /* по центру */
+    padding: 20px;            /* внутренние отступы */
+    background: rgba(255, 255, 255, 0.9); /* светлая подложка */
+    border-radius: 10px;      /* скруглённые углы */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
 
 /* Тёмная тема */
 
@@ -296,7 +305,7 @@ body.dark .menu-btn {
 	color: #ddd;
 }	
 body.dark .content-container {
-    background: rgba(30, 30, 30, 0.95);
+    background: #1e1e1ef2;
 }
 body.dark .episode-list button {
     background: #333;
@@ -319,3 +328,6 @@ body.dark .select select {
 }
 body.dark .select select:hover { border-color: #4a4a4a; }
 body.dark .select select:focus-visible { outline-color: #8ab4ff; }
+body.dark .info-container {
+    background: #2d2d2df2;
+}
