@@ -332,3 +332,13 @@ body.dark .select select:focus-visible { outline-color: #8ab4ff; }
 body.dark .info-container {
     background: rgb(45, 45, 45);
 }
+
+
+
+
+
+
+
+@media (max-width: 600px) {
+    .sideBackground {display: none;}
+}
