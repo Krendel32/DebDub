@@ -67,7 +67,7 @@ main {
 }
 
 .content-container {
-    max-width: 900px;         /* ширина контейнера */
+    max-width: 55%;         /* ширина контейнера */
     margin: 0 auto;           /* по центру */
     padding: 20px;            /* внутренние отступы */
     background: rgba(255, 255, 255, 0.5); /* светлая подложка */
@@ -75,7 +75,7 @@ main {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .info-container {
-    max-width: 870px;         /* ширина контейнера */
+    max-width: 95%;         /* ширина контейнера */
     margin: 0 auto;           /* по центру */
     padding: 20px;            /* внутренние отступы */
     background: rgba(255, 255, 255, 1); /* светлая подложка */
