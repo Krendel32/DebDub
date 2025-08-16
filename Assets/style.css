@@ -70,7 +70,7 @@ main {
     max-width: 900px;         /* ширина контейнера */
     margin: 0 auto;           /* по центру */
     padding: 20px;            /* внутренние отступы */
-    background: rgba(255, 255, 255, 0.9); /* светлая подложка */
+    background: rgba(255, 255, 255, 0.5); /* светлая подложка */
     border-radius: 10px;      /* скруглённые углы */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -78,7 +78,7 @@ main {
     max-width: 870px;         /* ширина контейнера */
     margin: 0 auto;           /* по центру */
     padding: 20px;            /* внутренние отступы */
-    background: rgba(255, 255, 255, 0.9); /* светлая подложка */
+    background: rgba(255, 255, 255, 1); /* светлая подложка */
     border-radius: 10px;      /* скруглённые углы */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     margin-bottom: 20px;
@@ -288,7 +288,7 @@ body.dark .episodes-scroll button:hover {
 
 /* Тёмная тема */
 body.dark {
-	background: #333;
+
 	color: #ddd;
 }
 body.dark .top-bar {
@@ -305,7 +305,7 @@ body.dark .menu-btn {
 	color: #ddd;
 }	
 body.dark .content-container {
-    background: #1e1e1ef2;
+    background: rgba(30, 30, 30, 0.5);
 }
 body.dark .episode-list button {
     background: #333;
@@ -329,5 +329,5 @@ body.dark .select select {
 body.dark .select select:hover { border-color: #4a4a4a; }
 body.dark .select select:focus-visible { outline-color: #8ab4ff; }
 body.dark .info-container {
-    background: #2d2d2df2;
+    background: rgb(45, 45, 45);
 }
