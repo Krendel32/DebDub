@@ -13,7 +13,7 @@ body.dark {
     background-image: url('https://www.dropbox.com/scl/fi/uq2oteyc7lw5bob8nqrgi/Empty_class_3-2_room.png?rlkey=dk3pzhumw29azd36zvzrxfjbb&st=zcpxbobs&raw=1');
 }
 video {
-	border-radius: 12px; 
+    border-radius: 12px;
 	border: 2px solid #bdbdbd;
 }
 .top-bar{
@@ -139,7 +139,9 @@ video {
 .arrow.open {
   transform: rotate(-90deg);
 }
-
+body.dark video {
+    border: 2px solid #555;
+}
 
 body.dark .custom-select {
     background: #212121;
@@ -151,10 +153,7 @@ body.dark .custom-select ul {
 body.dark .custom-select ul li:hover {
     background: #555;
 }
-body.dark video {
-	border-radius: 12px; 
-	border: 2px solid #555;
-}
+
 body.dark #optionsList {
   background: #212121;
 }
@@ -279,6 +278,23 @@ customSelect.addEventListener("mouseleave", () => {
 customSelect.addEventListener("mouseenter", () => {
     clearTimeout(closeTimeout);
 });
+
+document.addEventListener('fullscreenchange', () => {
+  const isFullscreen = !!document.fullscreenElement;
+
+  if (isFullscreen) {
+    player.style.border = 'none';
+    player.style.borderRadius = "0px";
+  } else {
+        if (localStorage.getItem('theme') === 'dark'){
+            player.style.border = '2px solid #555';
+        } else {
+            player.style.border = '2px solid #bdbdbd';
+        }
+    player.style.borderRadius = "12px";
+  }
+});
+
 </script>
 <script src="../../Assets/script.js"></script>
 </body>
