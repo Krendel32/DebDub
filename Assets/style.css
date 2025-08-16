@@ -84,6 +84,17 @@ main {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     margin-bottom: 20px;
 }
+.dop-container {
+    padding: 10px; 
+    max-height: auto;
+    background: rgb(208, 208, 208); /* светлая подложка */
+    border-radius: 10px;      /* скруглённые углы */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+body.dark .dop-container {
+    background-color: #232323;
+}
+
 
 /* Тёмная тема */
 
