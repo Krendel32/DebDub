@@ -1,7 +1,15 @@
 <html lang="ru">
 <head>
 <style>
-
+.nav-dev {
+    border:none; 
+    height:2px; 
+    background:#ccc;
+    margin: 0.5px;
+}
+body.dark .nav-dev {
+   background:#3e3e3e; 
+}
 .logo-text {
     font-size: 2rem;
 }
@@ -212,8 +220,16 @@ body.dark #optionsList {
 <!-- Боковое меню -->
 <nav class="side-menu" id="sideMenu">
     <a href="../../Main/">Главная</a>
+    <div class="menu-group">
+        <button class="dropdown-btn">
+            Переозвучки <span class="arrow">▶</span>
+        </button>
+        <div class="dropdown-container">
+            <a href="../../Dubs/">Что за переозвучки</a>
+            <a href="../../Dubs/D-ON/">D-ON</a>
+        </div>
+    </div>
     <a href="../../Settings/">Настройки</a>
-	<a href="../../Dubs/D-ON/">D-ON</a>
 </nav>
 
 <img id="bgLeft" class="sideBackground" src="https://www.dropbox.com/scl/fi/fohsj1o875a07dvt9qshf/97_20250429195538.png?rlkey=ikm1njj8aicz4umqczw2wb0cd&amp;st=ksqg3jrv&amp;raw=1" style="position: fixed; left: 0; bottom: 0; width: 25%; z-index: -1;">
