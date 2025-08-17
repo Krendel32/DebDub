@@ -61,6 +61,67 @@ body {
 .side-menu a:hover {
     background: #999;
 }
+.dropdown-btn {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-btn:hover {
+    background: #999;
+}
+
+/* Стрелочка */
+.arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* Контейнер подпунктов */
+.dropdown-container {
+    max-height: 0;              /* по умолчанию закрыт */
+    overflow: hidden;           /* скрываем лишнее */
+    padding-left: 15px;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.dropdown-container a {
+    display: block;
+    padding: 8px 10px;
+    font-size: 14px;
+}
+
+.dropdown-container a:hover {
+    background: #bbb;
+}
+
+/* Активное состояние */
+.menu-group.active .dropdown-container {
+    max-height: 500px; /* достаточно большое значение */
+}
+
+.menu-group.active .arrow {
+    transform: rotate(90deg);
+}
+
+body.dark .dropdown-btn:hover {
+    background: #555;
+}
+body.dark .dropdown-btn {
+    color: #ddd;
+}
+
+
+
 
 /* Основной контент — сдвигаем вниз под топ-бар */
 main {
