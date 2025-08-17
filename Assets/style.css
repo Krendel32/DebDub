@@ -110,7 +110,7 @@ body {
 }
 
 .menu-group.active .arrow {
-    transform: rotate(90deg);
+    transform: rotate(-90deg);
 }
 
 body.dark .dropdown-btn:hover {
