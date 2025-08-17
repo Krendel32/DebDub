@@ -418,4 +418,5 @@ body.dark .info-container {
     .sideBackground {display: none;}
     .logo {height: 10%}
     .content-container {max-width: 100%; border-radius: 0px;}
+    .page-title {font-size: 1.5rem;}
 }
