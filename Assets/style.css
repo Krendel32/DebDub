@@ -81,7 +81,7 @@ body {
 }
 
 /* Стрелочка */
-.arrow {
+.arrow_nav {
     display: inline-block;
     transition: transform 0.3s ease;
 }
@@ -109,7 +109,7 @@ body {
     max-height: 500px; /* достаточно большое значение */
 }
 
-.menu-group.active .arrow {
+.menu-group.active .arrow_nav {
     transform: rotate(-90deg);
 }
 
