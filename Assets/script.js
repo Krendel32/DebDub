@@ -20,39 +20,36 @@ document.querySelectorAll('.dropdown-btn').forEach(btn => {
 
 
 
-const themeSwitch = document.getElementById('themeSwitch');
+const body = document.body;
+const themeToggle = document.getElementById('themeToggle');
+const sunIcon = themeToggle.querySelector('.sun');
+const moonIcon = themeToggle.querySelector('.moon');
 
-// При загрузке страницы — ставим правильное положение переключателя
+// Проверяем сохранённую тему
 if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark');
-    themeSwitch.checked = true;
+    body.classList.add('dark');
+    moonIcon.classList.add('active');
+} else {
+    sunIcon.classList.add('active');
 }
 
-// При изменении положения переключателя
-themeSwitch.addEventListener('change', () => {
-    if (themeSwitch.checked) {
-        document.body.classList.add('dark');
+themeToggle.addEventListener('click', () => {
+    const darkMode = body.classList.toggle('dark');
+
+    if (darkMode) {
+        sunIcon.classList.remove('active');
+        moonIcon.classList.add('active');
         localStorage.setItem('theme', 'dark');
     } else {
-        document.body.classList.remove('dark');
+        moonIcon.classList.remove('active');
+        sunIcon.classList.add('active');
         localStorage.setItem('theme', 'light');
     }
 });
+
 
 const episodesList = document.getElementById('episodesList');
 const videoPlayer = document.getElementById('videoPlayer');
 
 
-
-// Генерация кнопок из массива
-episodesDon.forEach(ep => {
-    const btn = document.createElement('button');
-    btn.textContent = ep.title;
-    btn.addEventListener('click', () => {
-        videoPlayer.querySelector('source').src = ep.url;
-        videoPlayer.load();
-        videoPlayer.play();
-    });
-    episodesList.appendChild(btn);
-});
 
