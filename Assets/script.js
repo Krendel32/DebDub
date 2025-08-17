@@ -9,6 +9,16 @@ menuToggle.addEventListener('click', () => {
         sideMenu.style.left = '0px';
     }
 });
+// раскрытие вложенного списка
+document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const group = btn.parentElement;
+        group.classList.toggle('active');
+    });
+});
+
+
+
 
 const themeSwitch = document.getElementById('themeSwitch');
 
