@@ -10,6 +10,19 @@
 body.dark .nav-dev {
    background:#3e3e3e; 
 }
+.sideBackgroundLeft {
+    opacity: 0;
+}
+body.dark .sideBackgroundLeft {
+    opacity: 1;
+}
+.sideBackgroundRight {
+    opacity: 1;
+}
+body.dark .sideBackgroundRight {
+    opacity: 0;
+}
+
 .logo-text {
     font-size: 2rem;
 }
@@ -45,7 +58,7 @@ body {
   
 }
 body.dark {
-    background-image: url('https://www.dropbox.com/scl/fi/jtlofqfa3cw2qjaf34wvx/1_14.png?rlkey=hjm5eu7n7ly10uqbux26mnoew&st=wi6c1vcw&raw=1');
+    background-image: url('https://www.dropbox.com/scl/fi/fr1monh8xrrffbmarf5as/photo_2025-08-18_14-12-04.jpg?rlkey=s97pzmnh2y13y4hbhbhul5cu2&st=hk9c2tcw&raw=1');
 }
 video {
     border-radius: 12px;
@@ -236,8 +249,8 @@ body.dark #optionsList {
     </div>
 </nav>
 
-<img id="bgLeft" class="sideBackground" src="https://www.dropbox.com/scl/fi/dafr4x3li2fi3908he7fc/pngwing.com-4.png?rlkey=ya1ywkh8b6s36ef3mx30z0mx4&st=1b45092c&raw=1" style="position: fixed; left: 0; bottom: 0; width: 25%; z-index: -1;">
-<img id="bgRight" class="sideBackground" src="https://www.dropbox.com/scl/fi/mnlqtnc4mntp4xg9rb3z8/pngwing.com-5.png?rlkey=xqlzx2jdkuqvdib9k2bmpxilh&st=zlrqj5ai&raw=1" style="position: fixed; right: 0; bottom: 0; width: 45%; z-index: -1;;">
+<img id="bgLeft" class="sideBackgroundLeft" src="https://www.dropbox.com/scl/fi/dafr4x3li2fi3908he7fc/pngwing.com-4.png?rlkey=ya1ywkh8b6s36ef3mx30z0mx4&st=1b45092c&raw=1" style="position: fixed; left: 0; bottom: 0; width: 25%; z-index: -1; transition: opacity 0.4s ease">
+<img id="bgRight" class="sideBackgroundRight" src="https://www.dropbox.com/scl/fi/mnlqtnc4mntp4xg9rb3z8/pngwing.com-5.png?rlkey=xqlzx2jdkuqvdib9k2bmpxilh&st=zlrqj5ai&raw=1" style="position: fixed; right: 0; bottom: 0; width: 45%; z-index: -1; transition: opacity 0.4s ease">
 
 
 <main>
