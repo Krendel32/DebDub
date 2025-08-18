@@ -10,6 +10,21 @@
 body.dark .nav-dev {
    background:#3e3e3e; 
 }
+
+.sideBackgroundLeft {
+    opacity: 1;
+}
+body.dark .sideBackgroundLeft {
+    opacity: 0;
+}
+.sideBackgroundRight {
+    opacity: 0;
+}
+body.dark .sideBackgroundRight {
+    opacity: 1;
+}
+
+
 .logo-text {
     font-size: 2rem;
 }
@@ -236,8 +251,8 @@ body.dark #optionsList {
     </div>
 </nav>
 
-<img id="bgLeft" class="sideBackground" src="https://www.dropbox.com/scl/fi/fohsj1o875a07dvt9qshf/97_20250429195538.png?rlkey=ikm1njj8aicz4umqczw2wb0cd&amp;st=ksqg3jrv&amp;raw=1" style="position: fixed; left: 0; bottom: 0; width: 25%; z-index: -1;">
-<img id="bgRight" class="sideBackground" src="https://www.dropbox.com/scl/fi/swmkjabc418wzhpf1ook3/pngwing.com-2.png?rlkey=gca25464k5aeo73hwqs76u5qx&amp;st=u9mh0ytm&amp;raw=1" style="position: fixed; right: 0; bottom: 0; width: 25%; z-index: -1;;">
+<img id="bgLeft" class="sideBackgroundLeft" src="https://www.dropbox.com/scl/fi/fohsj1o875a07dvt9qshf/97_20250429195538.png?rlkey=ikm1njj8aicz4umqczw2wb0cd&amp;st=ksqg3jrv&amp;raw=1" style="position: fixed; left: 0; bottom: 0; width: 25%; z-index: -1; transition: opacity 0.4s ease">
+<img id="bgRight" class="sideBackgroundRight" src="https://www.dropbox.com/scl/fi/swmkjabc418wzhpf1ook3/pngwing.com-2.png?rlkey=gca25464k5aeo73hwqs76u5qx&amp;st=u9mh0ytm&amp;raw=1" style="position: fixed; right: 0; bottom: 0; width: 25%; z-index: -1; transition: opacity 0.4s ease">
 
 
 <main>
