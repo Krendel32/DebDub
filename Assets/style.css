@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f3f3f3;
+    transition: background 0.4s ease, color 0.4s ease;
 }
 
 /* Топ-бар */
