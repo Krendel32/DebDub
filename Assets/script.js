@@ -26,12 +26,20 @@ const sunIcon = themeToggle.querySelector('.sun');
 const moonIcon = themeToggle.querySelector('.moon');
 
 // Проверяем сохранённую тему
+body.classList.add('no-transition');
+
+// Загружаем тему из localStorage
 if (localStorage.getItem('theme') === 'dark') {
     body.classList.add('dark');
     moonIcon.classList.add('active');
 } else {
     sunIcon.classList.add('active');
 }
+
+// Даем браузеру дорисовать, потом возвращаем transition
+setTimeout(() => {
+    body.classList.remove('no-transition');
+}, 50);
 
 themeToggle.addEventListener('click', () => {
     const darkMode = body.classList.toggle('dark');
