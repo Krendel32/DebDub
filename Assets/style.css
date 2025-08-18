@@ -5,6 +5,9 @@ body {
     background-color: #f3f3f3;
     transition: background 0.4s ease, color 0.4s ease;
 }
+body.no-transition {
+    transition: none;
+}
 
 /* Топ-бар */
 .top-bar {
