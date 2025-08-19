@@ -1,13 +1,31 @@
+html {
+  visibility: hidden;
+}
 
+html.ready {
+  visibility: visible;
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f3f3f3;
+}
+body.transition * {
     transition: background 0.4s ease, color 0.4s ease;
 }
-body.no-transition {
-    transition: none;
+.sideBackgroundRight.transitionBg {
+    transition: opacity 0.4s ease
 }
+.sideBackgroundLeft.transitionBg {
+    transition: opacity 0.4s ease
+}
+
+
+
+
+
+
+
 
 /* Топ-бар */
 .top-bar {
