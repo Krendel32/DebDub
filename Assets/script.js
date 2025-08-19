@@ -1,3 +1,7 @@
+window.addEventListener("load", () => {
+  document.documentElement.classList.add("ready");
+});
+
 const menuToggle = document.getElementById('menuToggle');
 const sideMenu = document.getElementById('sideMenu');
 
@@ -25,8 +29,9 @@ const themeToggle = document.getElementById('themeToggle');
 const sunIcon = themeToggle.querySelector('.sun');
 const moonIcon = themeToggle.querySelector('.moon');
 
+
 // Проверяем сохранённую тему
-body.classList.add('no-transition');
+body.classList.remove('transition');
 
 // Загружаем тему из localStorage
 if (localStorage.getItem('theme') === 'dark') {
@@ -36,10 +41,11 @@ if (localStorage.getItem('theme') === 'dark') {
     sunIcon.classList.add('active');
 }
 
-// Даем браузеру дорисовать, потом возвращаем transition
 setTimeout(() => {
-    body.classList.remove('no-transition');
-}, 50);
+    body.classList.add('transition');
+    document.querySelectorAll(".sideBackgroundLeft, .sideBackgroundRight")
+        .forEach(el => el.classList.add("transitionBg"));
+}, 100);
 
 themeToggle.addEventListener('click', () => {
     const darkMode = body.classList.toggle('dark');
