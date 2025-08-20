@@ -10,8 +10,14 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f3f3f3;
 }
-body.transition * {
-    transition: background 0.4s ease, color 0.4s ease;
+body.transition .top-bar,
+body.transition .side-menu a,
+body.transition .content-container,
+body.transition .info-container,
+body.transition .dop-container,
+body.transition .custom-select,
+body.transition video {
+  transition: background-color .4s ease, color .4s ease, border-color .4s ease;
 }
 .sideBackgroundRight.transitionBg {
     transition: opacity 0.4s ease
